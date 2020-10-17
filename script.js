@@ -4,12 +4,11 @@ var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberChars = "1234567890";
 var specialChars = "!\"#$%&\'()*+,-.\\/:;<=>?@[]^_`{|}~";
-console.log(specialChars)
 
 // Write password to the #password input
-
 function writePassword() {
     var charPool = "";
+    //asks for password length. Returns early w/ message if length not a number between 8 and 128
     var len = Math.floor(Number(prompt("How many characters long would you like your password to be? (must be at least 8)")));
     if (isNaN(len) || len > 128 || len < 8) {
         alert("Password length must be a number between 8 and 128");
@@ -38,7 +37,7 @@ function writePassword() {
         alert("You need to select at least one character type to include")
         return
     }
-    console.log(charPool);
+    //console.log(charPool);
 
     password = '';
     //for as many times as user-input password length:
@@ -46,7 +45,7 @@ function writePassword() {
     for (i = 0; i < len; i++) {
         password = password + charPool[Math.floor(Math.random() * charPool.length)];
     }
-    // var password = generatePassword();
+    // var password = generatePass;
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
