@@ -15,7 +15,7 @@ function writePassword() {
         alert("Password length must be a number between 8 and 128");
         return
     }
-
+    //if statements checking users response to questions about criteria. If criteria is included, it gets added to pool of characters to be used
     if (confirm("Include lower case letters?")) {
         alert("Your password will include lowercase letters");
         charPool = charPool + lowerLetters;
@@ -33,8 +33,19 @@ function writePassword() {
         charPool = charPool + specialChars;
     } else { alert("Your password will not include special characters") }
 
+    //if nothing was added to pool of characters to be used, alert user that they need at least 1
+    if (charPool.length === 0) {
+        alert("You need to select at least one character type to include")
+        return
+    }
     console.log(charPool);
 
+    password = '';
+    //for as many times as user-input password length:
+    //add a random character from the character pool to password
+    for (i = 0; i < len; i++) {
+        password = password + charPool[Math.floor(Math.random() * charPool.length)];
+    }
     // var password = generatePassword();
     var passwordText = document.querySelector("#password");
 
